@@ -5,9 +5,9 @@ exports.up = function(knex) {
     table.string('name');
     table.float('price');
     table.timestamps();
-}).toString();
+})
 };
 
 exports.down = function(knex) {
-  
+  return knex.schema.dropTable(tableName)
 };
