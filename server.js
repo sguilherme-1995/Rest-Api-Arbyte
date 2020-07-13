@@ -12,8 +12,8 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*')// O asterisco é onde passa o dominio http
-//     res.header(
+//     res.header('Access-Control-Allow-Origin', '')// O asterisco é onde passa o dominio http
+//     res.header(*
 //         'Access-Control-Allow-Header', 
 //         'Origin, XRequested-With, Content-Type, Accept, Authorization',
         
