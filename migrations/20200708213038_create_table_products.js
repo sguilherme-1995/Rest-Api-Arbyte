@@ -2,8 +2,8 @@ const tableName = "products"
 exports.up = function(knex) {
   return knex.schema.createTable(tableName, (table) => {
     table.increments();
-    table.string('name');
-    table.float('price');
+    table.string('name').notNull();
+    table.float('price').notNull();
     table.timestamps();
 })
 };
