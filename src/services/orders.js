@@ -1,4 +1,6 @@
 const repository = require('../repositories/orders')
+const Order = require('../models/Order')
+const productService = require('./products')
 
 const getAll = () => repository.getAll()
 
@@ -17,13 +19,21 @@ const create = async (order) => {
 }
 
 const update = async (id, data) => {
+    const product = await productService.getById(data.product_id)
     data.id = undefined
     data.created_at = undefined
-    const order = await repository.getById(id)
-    if(!order){
+    data.value = product.price * data.quantity
+    const order = await repository.getById(id) || {}
+    if(!order.id){
         throw { status: 404, message: "Not Found" }
     }
     const merged = Object.assign({}, order, data)
+    // const newOrder = new Order({
+    //     ...merged, 
+    //     id: undefined, 
+    //     created_at: undefined,
+    //     updated_at: moment().utc().toDate()
+    // })                        ....
     await repository.update(id, merged)
     const updated = await repository.getById(id, data)
     return updated
