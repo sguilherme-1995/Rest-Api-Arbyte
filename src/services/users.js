@@ -1,6 +1,7 @@
 const User = require('../models/Users')
 const repository = require('../repositories/users')
 const { encryptPassword } = require('../utils/crypted')
+const { createToken } = require("../utils/jwt")
 
 const create = async (data) => {
     const user = new User({
@@ -28,12 +29,24 @@ const login = async (loginData) => {
         throw { status: 401, message: "Not Authorized" }
     }
 
-
+    const token = createToken(user.id)
+    return {
+        user: user.view(),
+        token
+    }
 }
 
+const getById = async (id) => {
+    const user = await repository.getOne({id: id})
+    if(!user){
+        throw {status: 404, message: "Not Found"}
+    }
+    return user
+}
 
 module.exports = {
     create,
     login,
+    getById,
 
 }

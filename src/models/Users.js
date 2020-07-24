@@ -6,13 +6,15 @@ function Users({
     name, 
     email, 
     password,
+    salt,
     created_at = utcNow,
     updated_at = utcNow
 } = {}) {
     this.id = id;
     this.name = name;
     this.email = email;
-    this.password = password
+    this.password = password;
+    this.salt = salt;
     this.created_at = created_at;
     this.updated_at = updated_at;
 
