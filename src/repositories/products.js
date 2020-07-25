@@ -10,13 +10,13 @@ const getAll = () => knex(tableName)
 const getById = (id) => {
     return knex(tableName)
     .where({ id })
-    .then(([product]) => product)
+    .then((product) => product)
 }
 
 //INSERT INTO products (name, price) VALUES (?, ?)
 const create = (product) => {
     return knex(tableName)
-    .insert(product).then(([inserted]) => inserted)
+    .insert(product).then((inserted) => inserted)
 }
 
 //UPDATE products SET(name=?, price=?) WHERE id=?
