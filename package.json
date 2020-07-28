@@ -4,7 +4,7 @@
   "description": "Exercicio de de REST API",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "jest",
     "start": "nodemon -r dotenv/config server",
     "migration:create": "knex migrate:make",
     "migration:up": "knex migrate:latest",
@@ -30,6 +30,7 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
     "nodemon": "^2.0.4"
   }
 }

@@ -15,7 +15,7 @@ const getById = (id) => {
 
 //INSERT INTO products (name, price) VALUES (?, ?)
 const create = (product) => {
-    return knex(tableName)
+    return knex(tableName).returning('id')
     .insert(product).then((inserted) => inserted)
 }
 

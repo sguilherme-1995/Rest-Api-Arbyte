@@ -11,7 +11,7 @@ const getById = (id) => {
 }
 
 const create = (service) => {
-    return knex(tableName)
+    return knex(tableName).returning('id')
     .insert(service).then(([inserted]) => inserted)
 }
 
